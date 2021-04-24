@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\usepackage{graphicx}
+\graphicspath{{abb/}}
+\usepackage{float}
+\usepackage{tikz}
+
+\usepackage{fancyhdr} % For headers and footers
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    linkcolor=blue,     
+    urlcolor=cyan,
+}
+
+\geometry{
+    a4paper, % Change this if you intend to print on a different paper size, such as letter paper.
+    left=20mm,
+    right=20mm,
+    top=30mm,
+    bottom=30mm,
+}
+
+\title{Dynamik - Kräfte}
+\author{Emil Staikov}
+\date{16. April 2021}
+
+\begin{document}
+\maketitle
+Wir können jetzt die Bewegung eines Körpers unter Einwirkung einer Beschleunigung beschreiben. In der Dynamik untersuchen wir, was Beschleunigungen verursacht. Die Dynmaik beschäftigt sich also mit Interaktionen zwischen einem Objekt und seiner Umgebung, die eine Geschwindigkeitsänderung zur Folge haben. Diese Interaktionen beschreiben wir durch sogenannte \textbf{Kräfte}, im Allgemeinen haben diese das Formelzeichen $\vec{F}$ (Kräfte sind vektorielle Größen, daher der Pfeil, aber dazu später mehr). 
+
+\section{Die Newtonschen Axiome}
+Wenn eine Kraft durch die Umgebung auf einen Körper wirkt, so beschleunigt dieser Körper. Newton lieferte mit den Newtonschen Axiomen erste Regeln, die Kräfte und die entstehenden Beschleunigungen meistens erfüllen (außer man ist sehr schnell, sehr klein, ..., aber damit werden wir uns jetzt nicht beschäftigen). 
+
+\subsection{Das erste Axiom (Trägheitsprinzip)}
+Es existieren Bezugssysteme, in denen ein Körper, auf den insgesamt keine Kraft wirkt, konstante Geschwindigkeit hat, bzw. in Ruhe bleibt, also keine Beschleunigung erfährt. Diese Systeme nennen wir Inertialsysteme. \\\\
+Praktisch heißt das, dass in nicht-beschleunigten Bezugssystemen Körper ohne Kräfteinwirkung ihre Bewegung nicht ändern, also träge sind. Mathematisch beschreiben wir das wie folgt: 
+\begin{equation*}
+    \vec{F_1} + \vec{F_2} + ... + \vec{F_N} = \sum_{i=1}^N \vec{F_i} = \sum \vec{F} = 0 \implies \vec{a} = 0
+\end{equation*}
+$\displaystyle \sum \vec{F}$ ist eine Kurzschreibweise für die Summe aller Kräfte, die auf einen Körper wirkt. $\vec{a}$ ist die resultierende Gesamtbeschleunigung des Körpers durch die Kräfte, die auf ihn wirken. 
+
+\subsection{Das zweite Axiom}
+Die durch die auf einen Körper wirkende Kraft resultierende Beschleunigung ist proportional zu dieser Kraft und der Masse des Körpers, oder: 
+\begin{equation*}
+    \sum \vec{F} = m\vec{a} \iff \sum F_x = ma_x \text{, } \sum F_y = ma_y \text{ und } \sum F_z = ma_z
+\end{equation*}
+Auf der rechten Seite werden die einzelnen Komponentengleichungen aufgelistet, wir können Vektoren stets zerlegen. Aus diesem Gesetz wird auch die vektorielle Natur der Kraft nochmal klar, die Masse ist ein Skalar und die Beschleunigung ist ein Vektor, daher ist das Produkt daraus, also die Kraft, ebenfalls ein Vektor. Als Beispiel kann man sich vorstellen, dass man eine Kiste schiebt, also ihre Geschwindigkeit ändert. Auf die Kiste übt man also eine Kraft aus, abhängig davon in welche Richtung man schiebt, ändert sich auch die Richtung der Geschwindigkeit. Sowohl Betrag als auch Richtung der Kraft sind also interessant. \\
+Zusätzlich folgern wir hieraus die Einheit für die Kraft, $\displaystyle [\vec{F}] = [m\vec{a}] = \frac{kg\cdot m}{s^2} = N$, wobei $N$ eine abgeleitete Einheit ist und Newton genannt wird. 
+
+\subsection{Das dritte Axiom (Reaktionsprinzip)}
+Übt ein Körper A \textit{in einem Inertialsystem} eine Kraft $\vec{F}_{A\rightarrow B}$ auf einen Körper B aus (\textit{actio}), so übt B eine entgegengesetzt gleiche Kraft $\vec{F}_{B \rightarrow A}$ auf den Körper A aus (\textit{reactio}), also $\vec{F}_{A\rightarrow B} = - \vec{F}_{B \rightarrow A}$. \\\\
+Hier ist es wichtig zu beachten, dass die Reaktionskraft stets auf einen anderen Körper wirkt als die Aktionskraft. 
+
+\subsection{Das Superpositionsprinzip}
+Wenn auf einen Körper mehrere Kräfte wirken, so ist es äquivalent die Vektorsumme $\vec{F}_K$ aller Kräfte als einzige wirkende Kraft zu betrachten: 
+\begin{equation*}
+    \vec{F}_1 + \vec{F}_2 + ... + \vec{F}_N = \sum \vec{F} = \vec{F}_K
+\end{equation*}
+
+\section{Wichtige Kräfte}
+\textbf{Gravitationskraft:} Wie durch Messungen festgestellt wirkt auf der Erdoberfläche überall die Erdbeschleunigung $\vec{g} \approx 9.81 \frac{m}{s^2}$ (sie variiert leicht mit Höhe und Lage, das vernachlässigen wir aber). Folglich gilt für die Gravitationskraft nach dem zweiten Axiom $\vec{F}_G = mg$. \\\\
+\textbf{Federkraft:} Eine Feder außerhalb ihrer Ruhelage übt eine Kraft entgegen, aber proportional zu ihrer Auslenkung aus. Wenn wir die Auslenkung als $\vec{x}$ bezeichnen, gilt für die Federkraft: 
+\begin{equation*}
+    \vec{F}_F = -D\vec{x}
+\end{equation*}
+Diese Beziehung wird als Hookesches Gesetz bezeichnet, $D$ ist die sogenannte Federkonstante mit Einheit $\frac{N}{m}$. Die Federkonstante ist eine Eigenschaft einer bestimmten Feder. Dieses Gesetz beschreibt nur das Verhalten einer idealiserten Feder, für ausreichend kleine Auslenkungen verhalten sich aber auch echte Federn näherungsweise ideal. In Aufgaben betrachten wir praktisch immer ideale Federn. \\\\
+\textbf{Spannkraft:} Ein gespanntes Seil übt auf die Objekte an seinen Enden eine Spannkraft $\vec{F}_S$ aus, diese ist nach dem dritten Axiom entgegensetzt gleich zu der Kraft, die die Objekte auf das Seil ausüben. Hier haben wir keine allgemeine Formel. Zwei Gegenstände, die an einem Seil hängen, haben die gleiche Beschleunigung und Geschwindigkeit. Ein Seil ist gespannt, wenn die auf das Seil wirkende Kraft größer als $0$ ist. \\\\
+\textbf{Normalkraft:} Eine Oberfläche übt auf ein Objekt, das auf dieser Oberfläche liegt, eine Kraft $\vec{F}_N$ aus, die senkrecht (auch als normal bezeichnet) zu der Oberfläche steht. Für die Normalkraft haben wir auch keine allgemeine Formel. \\\\
+\textbf{Reibungskräfte:} Auf ein Objekt auf einer Oberfläche wirken Reibungskräfte, welche stets der (möglichen) Bewegung dieses Objekts entgegenwirken. Wir unterscheiden drei Reibungskräfte dieser Art: 
+\begin{itemize}
+    \item Haftreibungskraft $\vec{F} \leq \mu_H \vec{F}_N$ (wenn der Körper auf der Oberfläche in Ruhe ist)
+    \item Gleitreibungskraft $\vec{F} = \mu_G \vec{F}_N$ (wenn sich der Körper auf der Oberfläche geradlinig bewegt)
+    \item Rollreibungskraft $\vec{F} = \mu_R \vec{F}_N$ (wenn der Körper auf der Oberfläche rollt)
+\end{itemize}
+$\mu_H$, $\mu_G$ und $\mu_R$ sind die Haft-/Gleit-/Rollreibungskoeffizienten, sie sind von der Beschaffenheit des Objektes und der Oberfläche abhängig. Im Allgemeinen gilt für eine Oberfläche und einen Körper $\mu_H > \mu_G > \mu_R$. \\
+Um die Formel für die Haftreibungskraft zu verstehen, kann man sich einen Tisch vorstellen, auf dem ein Buch liegt. Auf das Buch wirkt senkrecht nach unten die Gravitationskraft, und der Tisch übt auf das Buch eine Normalkraft aus. Diese ist nach dem zweiten Axiom entgegengesetzt gleich der Gravitionskraft, da das Buch in Ruhe ist. \\
+Wenn wir das Buch nun versuchen zu schieben, müssen wir eine Mindestkraft ausüben, bevor es anfängt sich zu bewegen. Das heißt, dass bis zu einer bestimmten Krafteinwirkung eine Kraft unserem Schieben entgegenwirkt - das ist eben die Haftreibungskraft. Bis wir durch unser Schieben die maximale Haftreibungskraft $\mu_H F_N$ übersteigen, wirkt eine unserem Schieben entgegengesetzte gleiche Haftreibungskraft auf das Buch, diese ist nicht stets gleich $\mu_H F_N$. Die Haftreibungskraft ist jedoch \textbf{nicht} die Reaktionskraft auf das Schieben. Überlege dir als Verständnisfrage, was a) die Reaktionskraft zur Schiebekraft auf das Buch, b) die Reaktionskraft zur Reibung des Buches und c) die Reaktionskraft zur Gravitationskraft auf das Buch ist. 
+\textbf{Auftriebskraft:} Auf einem Körper in einem Fluid (also einem Flüssigkeit oder einem Gas) wirkt eine Auftriebskraft $F_A = \rho Vg$ senkrecht nach oben, wobei $\rho$ die Dichte des Fluids, $V$ das Volumen des Körpers im Wasser und $g$ die Erdbeschleunigung ist. $\rho Vg$ ist die Gewichtskraft des verdrängten Fluids. 
+
+\end{document}
