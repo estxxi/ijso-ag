@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+
+\usepackage{fancyhdr} % For headers and footers
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    linkcolor=blue,     
+    urlcolor=cyan,
+}
+
+\geometry{
+    a4paper, % Change this if you intend to print on a different paper size, such as letter paper.
+    left=20mm,
+    right=20mm,
+    top=30mm,
+    bottom=30mm,
+}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+\title{Dynamik - Stöße}
+\author{Emil Staikov}
+\date{17. Mai 2021}
+
+\begin{document}
+\maketitle
+
+Bei einem Stoß üben zwei (oder mehr) Körper kurzzeitig Kräfte aufeinander aus. Dadurch ändert sich die Geschwindigkeit der Körper, und bei manchen Stößen sogar ihr Aufbau. Dabei nehmen wir an, dass keine Masse zwischen den Körpern übergeht, theoretisch könnte das aber passieren. \\
+Betrachten wir die Größen vor und nach dem Stoß: 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline 
+    & Vor dem Stoß & Nach dem Stoß \\
+    \hline 
+    Masse & $m_1$, $m_2$ & $m_1$, $m_2$ \\
+    \hline 
+    Geschwindigkeit & $v_1$, $v_2$ & $v'_1$, $v'_2$ \\
+    \hline 
+    Impuls & $m_1v_1 + m_2v_2$ & $m_1v'_1 + m_2v'_2$ \\
+    \hline 
+    Energie & $\frac{1}{2}m_1v^2_1 + \frac{1}{2}m_2v^2_2$ & $\frac{1}{2}m_1v'^2_1 + \frac{1}{2}m_2v'^2_2 + \Delta E$ \\
+    \hline
+\end{tabular}
+\end{center}
+Bei den meisten Stößen die wir betrachten wirken keine äußeren Kräfte auf die stoßenden Körper, in solchen Fällen gelten IES und EES: 
+\begin{align*}
+    m_1v_1 + m_2v_2 &= m_1v'_1 + m_2v'_2 \\
+    \frac{1}{2}m_1v^2_1 + \frac{1}{2}m_2v^2_2 &= \frac{1}{2}m_1v'^2_1 + \frac{1}{2}m_2v'^2_2 + \Delta E
+\end{align*}
+Ob die Voraussetzungen der beiden Sätze in einem von uns betrachteten System erfüllt sind, ist jedoch stets zu überprüfen. Wir können verschiedene Stoßarten anhand von zwei Kriterien unterscheiden. Für $\Delta E \neq 0$ ist der EES meistens nicht anwendbar, da $\Delta E$ meistens nicht ohne weiteres zu berechnen ist. 
+
+
+
+\section{Stoßrichtung}
+Wir unterscheiden zentrale und schiefe Stöße, bei einem zentralen Stoß bewegen sich die beiden Körper auf der Verbindungslinie der Schwerpunkte (anschaulich frontal) aufeinander zu. Nach dem Aufeinandertreffenden werden sich bei de Körper immernoch auf dieser Verbindungslinie, womöglich aber in andere Richtungen, weiterbewegen. \\
+Bei schiefen Stößen treffen die Körper versetzt aufeinander, dadurch bewegen sie sich nach dem Stoß im Allgemeinen in jeweils andere Richtungen.
+
+
+
+\section{Energieänderung}
+\subsection{Elastischer Stoß}
+\textbf{Beschreibung:} Anschaulich springen die Körper beim elastischen Stoß vollständig voneinander ab, die mechanische Energie in dem System bleibt gleich und $\Delta E = 0$. In den meisten Fällen ändert sich bei Stößen (also auch in anderen Fällen) die potentielle Energie nicht, also bleibt sogar die kinetische Energie erhalten. \\\\
+\textbf{Beispiele:} Ein Beispiel für einen praktisch vollständig elastischen Stoß sind Billiardkugeln. 
+
+
+\subsection{Inelastischer Stoß}
+\textbf{Beschreibung:} Beim inelastischen Stoß ändert sich der Aufbau von einigen der Körper, dabei wird Energie von mechanischer Energie in z. B. Wärme umgewandelt. Folglich gilt $\Delta E < 0$, die Körper springen nicht vollständig voneinander ab. \\\\
+\textbf{Beispiele:} Ein Beispiel für einen inelastischen Stoß bildet das Treten eines Fußballs - sowohl Fuß als auch Ball ändern beim Stoßprozess teils ihre Form, wobei mechanische Energie hauptsächlich in Wärme übergeht. 
+
+\subsection{Vollständig inelastischer Stoß}
+\textbf{Beschreibung:} Bei einem vollständig inelastischen Stoß bleiben die Körper nach dem Stoß aneinander Hängen, damit gilt $\Delta E < 0$ und $v' = v'_1 = v'_2$. \\\\
+\textbf{Beispiele:} Ein Beispiel für einen vollständig inelastischen Stoß sind zwei Gewichtewagen mit Knetestücken auf den einander zugerichteten Seiten, nach dem Stoß rollen diese gemeinsam weiter. Das bereits behandelte Beispiel von Block und Geschoss stellt ebenfalls einen vollständig inelastischen Stoß da. 
+
+\subsection{Superelastischer Stoß}
+\textbf{Beschreibung:} Beim superelastischen oder explosiven Stoß wird Energie der stoßenden Körer in mechanische Energie umgewandelt, die Körper haben also nach dem Stoß mehr Energie als davor. Damit ist $\Delta E > 0$. \\\\
+\textbf{Beispiele:} Ein Beispiel wären zwei Gewichtewagen mit zusammengedrückten Federn auf den einander zugerichteten Seiten. Wenn diese Federn im Moment des Stoßes losgelassen werden, erhöht sich die kinetische Energie der Wägen. Die Energie der Federn können wir als potentielle Energie beschreiben, mit ausreichend Informationen über die Federn können wir also tatsächlich $\Delta E$ finden. 
+
+
+
+\section{Epilog}
+Bei Stößen ist der allgemeine Ansatz eine Anwendung des IES, und in besonderen Fällen des EES. Die genauen Voraussetzungen der Sätze für das betrachtete System sind aber stets zu überprüfen. \\ 
+Aus den Betrachtungen zu Verformungen können wir schließen, dass die Erhaltung der mechanischen Energie in realistischeren Szenarien im Vergleich zur Impulserhaltung relativ ungenau ist.
+
+
+\end{document}
