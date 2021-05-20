@@ -1,0 +1,3 @@
+Skripte: 
+- Funktionen (von Anna)
+- Gleichungen (Quadratisch, Wurzel, log)
