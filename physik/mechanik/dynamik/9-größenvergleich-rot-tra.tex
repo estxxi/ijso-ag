@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+
+\usepackage{fancyhdr} % For headers and footers
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    linkcolor=blue,     
+    urlcolor=cyan,
+}
+
+\geometry{
+    a4paper, % Change this if you intend to print on a different paper size, such as letter paper.
+    left=20mm,
+    right=20mm,
+    top=30mm,
+    bottom=30mm,
+}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+\renewcommand{\arraystretch}{1.5}
+
+\title{Größenvergleich zwischen Rotation und Translation}
+\author{Emil Staikov}
+\date{}
+
+\begin{document}
+\maketitle
+In den bisherigen Ausarbeitungen haben wir verschiedene Äquivalenzen zwischen Größen in der Rotations- und Translationsbewegung gefunden, hier halten wir sie tabellarisch fest. \\\\
+\begin{center}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Translation} & \textbf{Rotation} \\
+        \hline
+        Weg $s$ & Winkel $\varphi$ \\
+        \hline
+        Geschwindigkeit $v = \frac{\Delta s}{\Delta t}$ & Winkelgeschwindigkeit $\omega = \frac{\Delta \varphi}{\Delta t}$ \\
+        \hline 
+        Beschleunigung $a = \frac{\Delta v}{\Delta t}$ & Winkelbeschleunigung $\alpha = \frac{\Delta \omega}{\Delta t}$ \\
+        \hline  
+        Kraft $F$ & Drehmoment $M = rF\sin\theta$ ($\theta = \angle\vec{r}\vec{F}$) \\ 
+        \hline 
+        Masse $m$ & Trägheitsmoment $I = \sum_{i=0}^n m_ir_i^2$ \\ 
+        \hline 
+        2. Newton'sches Axiom $F = ma$ & 2. Newton'sches Axiom $M=I\alpha$ \\ 
+        \hline 
+        Kin En.der Translation $E_{kin} = \frac{1}{2} m v^2$ & Kin. En. der Rotation $E_{kin} = \frac{1}{2}I\omega^2$ \\ 
+        \hline 
+        Impuls $p = mv$ & Drehimpuls $L = I\omega$ \\
+        \hline 
+        Impulserhaltung $\sum F = 0 \implies p = const.$ & Drehimpulserhaltung $\sum M = 0 \implies L = const.$\\
+        \hline 
+    \end{tabular}
+\end{center}
+
+
+\end{document}

@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+
+\usepackage{fancyhdr} % For headers and footers
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    linkcolor=blue,     
+    urlcolor=cyan,
+}
+
+\geometry{
+    a4paper, % Change this if you intend to print on a different paper size, such as letter paper.
+    left=20mm,
+    right=20mm,
+    top=30mm,
+    bottom=30mm,
+}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+\title{Dynamik - Energie (Rotation)}
+\author{Emil Staikov}
+\date{31. Mai 2021}
+
+\begin{document}
+\maketitle
+MIt einer Rotationsbewegung können wir wie bei der Translationbewegung eine kinetische Energie assoziieren. Dafür nutzen wir die uns schon bekannte Formel für kinetische Energie, wenden sie aber auf die Tangentialgeschwindigkeit $v_T$ eines rotierenden Massepunkts an: 
+\begin{equation*}
+        E_{kin} = \frac{1}{2} m v_T^2
+\end{equation*}
+Zwischen Tangential- und Winkelgeschwindgkeit besteht der bekannte Zusammenhang $v_T = r\omega$, wir setzen also ein 
+\begin{equation*}
+        \frac{1}{2} m v_T^2 = \frac{1}{2}m (r\omega)^2 = \frac{1}{2}mr^2 \omega^2
+\end{equation*}
+Der Term $mr^2$ entspricht dem Trägheitsmoment $I$, folglich gilt 
+\begin{equation*}
+        E_{kin} = \frac{1}{2} I \omega^2
+\end{equation*} 
+Wir erkennen wieder die Analogien zwischen Größen der Rotation und Translation, wenn wir die Ausdrücke für kinetische Energie von Rotation und Translation vergleichen: 
+\begin{equation*}
+        E_{kin, t} = \frac{1}{2} m v^2 \quad \quad \quad E_{kin, r} = \frac{1}{2} I \omega^2
+\end{equation*}
+In der Formel entspricht die Masse dem Trägheitsmoment und die Geschwindigkeit der Winkelgeschwindgkeit. 
+
+\end{document}
